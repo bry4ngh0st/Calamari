@@ -1,5 +1,6 @@
 ﻿using System;
 using System.CodeDom.Compiler;
+using System.Text;
 
 namespace Calamari
 {
@@ -21,6 +22,11 @@ namespace Calamari
             if (stdOutMode == mode) return;
             StdOut.WriteLine("##octopus[stdout-" + mode + "]");
             stdOutMode = mode;
+        }
+
+        public static string ConvertServiceMessageValue(string value)
+        {
+            return Convert.ToBase64String(Encoding.Default.GetBytes(value));
         }
 
         public static void Verbose(string message)
